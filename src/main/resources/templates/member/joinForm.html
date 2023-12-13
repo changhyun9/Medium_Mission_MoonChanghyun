@@ -1,0 +1,24 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{common/default_layout}">
+<div layout:fragment="content">
+    <div class="my-3 border-bottom text-center">
+        <h4>회원가입</h4>
+    </div>
+    <form th:action th:object="${memberForm}" method="post">
+        <div th:replace="~{/common/form_errors :: formErrorsFragment}"></div>
+            <div class="mb-3">
+                <label for="username" class="p-1 fw-bold">[사용자명]</label>
+                <input type="text" class="p-1 form-control" th:field="*{username}" placeholder="Enter name" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="p-1 fw-bold">[비밀번호]</label>
+                <input type="password" class="p-1 form-control" th:field="*{password}" placeholder="Enter password" required>
+            </div>
+            <div class="mb-3">
+                <label for="passwordCheck" class="p-1 fw-bold">[비밀번호 확인]</label>
+                <input type="password" class="p-1 form-control" th:field="*{passwordCheck}" placeholder="Enter password" required>
+            </div>
+            <button class="btn btn-primary my-3" type="submit">SignUp</button>
+    </form>
+</div>
+</html>

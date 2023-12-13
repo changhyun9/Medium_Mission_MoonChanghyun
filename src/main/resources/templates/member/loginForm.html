@@ -1,0 +1,20 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/default_layout}">
+<div layout:fragment="content">
+    <div class="my-3 border-bottom text-center">
+        <h4>로그인</h4>
+    </div>
+        <form th:action th:object="${loginForm}" method="post">
+            <div th:replace="~{/common/form_errors :: formErrorsFragment}"></div>
+            <div class="mb-3">
+                <label for="username" class="p-1 fw-bold">[사용자명]</label>
+                <input class="form-control p-1" type="text" th:field="*{username}" placeholder="Enter username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="p-1 fw-bold">[비밀번호]</label>
+                <input type="password" class="p-1 form-control" th:field="*{password}" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="btn btn-primary my-2">SignIn</button>
+        </form>
+</div>
+</html>
