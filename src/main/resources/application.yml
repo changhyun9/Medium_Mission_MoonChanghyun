@@ -12,6 +12,18 @@ spring:
         format_sql: true
         show_sql: true
         dialect: org.hibernate.dialect.H2Dialect
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
+  h2:
+    console:
+      settings:
+        web-allow-others: true
 
 logging:
   level:
