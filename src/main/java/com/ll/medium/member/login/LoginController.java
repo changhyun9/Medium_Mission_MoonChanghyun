@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/member")
@@ -27,8 +28,8 @@ public class LoginController {
 
     // TODO: POST /member/login -> 실제 로그인 로직 실행
     @PostMapping("/login")
-    public String login(@Valid LoginForm loginForm, BindingResult bindingResult, HttpServletRequest request,
-                        Model model) {
+    public String login(@Valid LoginForm loginForm, BindingResult bindingResult,
+                        @RequestParam(defaultValue = "/") String redirectURL, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
             return "member/loginForm";
         }
@@ -38,11 +39,10 @@ public class LoginController {
             bindingResult.reject("singInFailed", "아이디 또는 비밀번호를 확인해주세요.");
             return "member/loginForm";
         }
-        model.addAttribute("member", loginMember);
         HttpSession session = request.getSession();
         session.setAttribute(LOGIN_MEMBER, loginMember);
 
-        return "redirect:/";
+        return "redirect:"+redirectURL;
     }
 
     // TODO: POST /member/logout -> 실제 로그아웃 로직 실행
