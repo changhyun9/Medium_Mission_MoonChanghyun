@@ -1,0 +1,35 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/default_layout}">
+<div layout:fragment="content">
+  <div class="my-3 border-bottom text-center">
+    <h4>나의 글</h4>
+  </div>
+  <div class="container my-3">
+    <table class="table">
+      <thead class="table">
+      <tr class="text-center">
+        <th class="border border-dark p-1">번호</th>
+        <th class="border border-dark p-1 w-25">제목</th>
+        <th class="border border-dark p-1" style="width: 40%">본문</th>
+        <th class="border border-dark p-1">작성자</th>
+        <th class="border border-dark p-1">작성시간</th>
+        <th class="border border-dark p-1">공개여부</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:if="${articleList.size() > 0}" th:each="article : ${articleList}">
+        <td class="border text-center" th:text="${article.id}"></td>
+        <td class="border">
+          <a th:href="@{|/post/${article.id}|}" th:text="${article.title}"> </a>
+        </td>
+        <td class="border" th:text="${article.body}"></td>
+        <td class="border text-center" th:text="${article.author.username}"></td>
+        <td class="border text-center" th:text="${#temporals.format(article.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td class="border text-center" th:text="${article.isPublished}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</html>

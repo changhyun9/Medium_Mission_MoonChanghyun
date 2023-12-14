@@ -1,0 +1,24 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/default_layout}">
+<div layout:fragment="content">
+    <div class="my-3 border-bottom text-center"></div>
+    <div class="container my-3">
+        <form th:object="${articleForm}" method="post">
+            <div th:replace="~{/common/form_errors :: formErrorsFragment}"></div>
+            <div class="mb-3">
+                <label for="title" class="form-label fw-bolder">제 목</label>
+                <input type="text" th:field="*{title}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="body" class="form-label fw-bolder">내 용</label>
+                <textarea th:field="*{body}" class="form-control" rows="10" required></textarea>
+            </div>
+            <div class="ratio-1x1">
+                <label><input type="radio" name="isPublished" value="true" checked="true">공개</label>
+                <label><input type="radio" name="isPublished" value="false">비공개</label>
+            </div>
+            <input type="submit" value="등록" class="btn btn-primary my-2">
+        </form>
+    </div>
+</div>
+</html>

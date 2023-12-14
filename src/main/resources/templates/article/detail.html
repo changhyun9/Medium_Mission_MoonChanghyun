@@ -1,0 +1,37 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/default_layout}">
+<div layout:fragment="content">
+    <div class="d-block container my-3">
+        <div class="d-flex border-bottom">
+            <h2 th:text="${article.title}"></h2>
+        </div>
+        <div class="mt-2 d-flex justify-content-end">
+            <div class="mb-2 badge bg-light text-dark p-2 text-start mx-1">
+                <span>작성자</span>
+                <span th:text="${article.author.username}"></span>
+            </div>
+            <div class="mb-2 badge bg-light text-dark p-2 text-start mx-1">
+                <span>작성시간</span>
+                <span th:text="${#temporals.format(article.createTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+            </div>
+            <div class="mb-2 badge bg-light text-dark p-2 text-start mx-1">
+                <span>공개여부</span>
+                <span th:text="${article.isPublished}"></span>
+            </div>
+        </div>
+        <div class="container my-3 card-body">
+            <div class="fs-5" th:text="${article.body}">
+            </div>
+        </div>
+        <div class="d-flex justify-content-end" th:if="${loginMember != null}">
+            <div class="me-2" th:if="${loginMember.username.equals(article.author.username)}">
+                <button class="btn btn-primary" onclick="">수정</button>
+            </div>
+            <div class="me-2" th:if="${loginMember.username.equals(article.author.username)}">
+                <button class="btn btn-primary" onclick="">삭제</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+</html>

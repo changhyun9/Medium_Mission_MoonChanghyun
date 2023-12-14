@@ -2,7 +2,12 @@
       layout:decorate="~{common/default_layout}">
 <div layout:fragment="content">
     <div class="my-3 border-bottom text-center">
-        <h4>Medium</h4>
+        <h4>자유 게시판</h4>
+    </div>
+    <div class="container mt-2">
+        <div>
+            <button type="button" class="btn btn-primary pt-2" onclick="location.href='/post/write'">글 ️쓰기</button>
+        </div>
     </div>
     <div class="container my-3">
         <table class="table">
@@ -30,5 +35,6 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>
 </html>
